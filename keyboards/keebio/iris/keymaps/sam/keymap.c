@@ -3,36 +3,47 @@
 extern keymap_config_t keymap_config;
 
 #define _QWERTY 0
-#define _WINDOWS 1
+#define _GAMING 1
 #define _RAISE 2
 #define _ARROWS 3
 
-#define F_ARWS LT(ARROWS, KC_F)
+#define V_ARWS LT(ARROWS, KC_V)
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
-  WINDOWS,
+  GAMING,
   RAISE,
   ARROWS
 };
+
+#define GT_A LGUI_T(KC_A)
+#define AT_S LALT_T(KC_S)
+#define CT_D LCTL_T(KC_D)
+#define ST_F LSFT_T(KC_F)
+
+#define ST_J LSFT_T(KC_J)
+#define CT_K LCTL_T(KC_K)
+#define AT_L LALT_T(KC_L)
+#define GT_SCLN LGUI_T(KC_SCLN)
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_QWERTY] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    WINDOWS,
+     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    GAMING,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
      KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                               KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-CTL_T(KC_ESC),KC_A,    KC_S,    KC_D,    F_ARWS,  KC_G,                               KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, RCTL_T(KC_QUOT),
+CTL_T(KC_ESC),GT_A,    AT_S,    CT_D,    ST_F,    KC_G,                               KC_H,    ST_J,    CT_K,    AT_L,    GT_SCLN, RCTL_T(KC_QUOT),
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_BSPC,          KC_BSPC, KC_N,    KC_M,    KC_COMM,  KC_DOT, KC_SLSH, SFT_T(KC_ENT),
+     KC_LSFT, KC_Z,    KC_X,    KC_C,    V_ARWS,  KC_B,    KC_BSPC,          KC_BSPC, KC_N,    KC_M,    KC_COMM,  KC_DOT, KC_SLSH, SFT_T(KC_ENT),
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
                                     KC_LGUI, KC_LALT, SFT_T(KC_SPC),        SFT_T(KC_SPC), RAISE,  KC_LALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
 
-  [_WINDOWS] = LAYOUT(
+  [_GAMING] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    QWERTY,
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
@@ -83,9 +94,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       return false;
 		break;
-		case WINDOWS:
+		case GAMING:
       if (record->event.pressed) {
-        set_single_persistent_default_layer(_WINDOWS);
+        set_single_persistent_default_layer(_GAMING);
       }
       return false;
 		break;
