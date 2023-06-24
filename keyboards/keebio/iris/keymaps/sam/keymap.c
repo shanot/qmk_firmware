@@ -7,7 +7,7 @@ extern keymap_config_t keymap_config;
 #define _RAISE 2
 #define _ARROWS 3
 
-#define V_ARWS LT(ARROWS, KC_V)
+#define AR_TAB LT(ARROWS, KC_TAB)
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
@@ -21,10 +21,10 @@ enum custom_keycodes {
 #define CT_D LCTL_T(KC_D)
 #define ST_F LSFT_T(KC_F)
 
-#define ST_J LSFT_T(KC_J)
-#define CT_K LCTL_T(KC_K)
-#define AT_L LALT_T(KC_L)
-#define GT_SCLN LGUI_T(KC_SCLN)
+#define ST_J RSFT_T(KC_J)
+#define CT_K RCTL_T(KC_K)
+#define AT_L RALT_T(KC_L)
+#define GT_SCLN RGUI_T(KC_SCLN)
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -37,12 +37,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
 CTL_T(KC_ESC),GT_A,    AT_S,    CT_D,    ST_F,    KC_G,                               KC_H,    ST_J,    CT_K,    AT_L,    GT_SCLN, RCTL_T(KC_QUOT),
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_LSFT, KC_Z,    KC_X,    KC_C,    V_ARWS,  KC_B,    KC_BSPC,          KC_BSPC, KC_N,    KC_M,    KC_COMM,  KC_DOT, KC_SLSH, SFT_T(KC_ENT),
+     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_BSPC,          KC_BSPC, KC_N,    KC_M,    KC_COMM,  KC_DOT, KC_SLSH, SFT_T(KC_ENT),
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    KC_LGUI, KC_LALT, SFT_T(KC_SPC),        SFT_T(KC_SPC), RAISE,  KC_LALT
+                                    KC_LGUI, KC_ENT,  AR_TAB,               SFT_T(KC_SPC), RAISE,  KC_LALT
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   ),
-
   [_GAMING] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_ESC,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                               KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    QWERTY,
@@ -81,7 +80,7 @@ CTL_T(KC_ESC),GT_A,    AT_S,    CT_D,    ST_F,    KC_G,                         
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      _______, _______, _______, _______, _______, _______, _______,          _______, _______, KC_END,  KC_PGDN, _______, _______, _______,
   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-                                    _______, _______, _______,                   _______, _______, _______
+                                    _______, _______, _______,                   KC_ESC,  KC_BSPC, _______
                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
   )
 };
