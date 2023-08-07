@@ -1,0 +1,10 @@
+COMB(sdESC,         LCA_T(KC_ESC),            H_S,    	H_D)
+COMB(dfTAB,         C_S_T(KC_TAB),            H_D,    	H_F)
+COMB(jkENT,         C_S_T(KC_ENT),            H_J,    	H_K)
+COMB(klBspc,        LCA_T(KC_BSPC),           H_K,    	H_L)
+
+COMB(fjCAPSWORD,    CW_TOGG,                  H_F,     H_J)
+
+COMB(frLPRN,        KC_LPRN,                  H_F,     KC_R)
+
+
